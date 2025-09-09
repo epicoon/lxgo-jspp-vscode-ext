@@ -1,0 +1,232 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "JavaScript (lx)",
+	"scopeName": "source.js.lx",
+	"injectionSelector": "L:source.js",
+	"patterns": [{
+		"name": "meta.ml.lx",
+		"begin": "@lx:<ml\\b(?:\\s+([A-Za-z_][A-Za-z0-9_.]*)\\s*:)?",
+		"beginCaptures": {
+			"0": { "name": "keyword.control.lx" },
+			"1": { "name": "variable.other.lxml" }
+		},
+		"end": "@lx:ml>",
+		"endCaptures": {
+			"0": { "name": "keyword.control.lx" }
+		},
+		"patterns": [{
+			"name": "entity.name.tag.lxml",
+			"match": "</?[a-zA-Z_][A-Za-z0-9_.]*>"
+		}, {
+			"name": "entity.other.attribute-name.lxml",
+			"match": "\\.[A-Za-z_][A-Za-z0-9_]*"
+		}, {
+			"name": "keyword.operator.access.lxml",
+			"match": "@[a-zA-Z_][a-zA-Z0-9_]*"
+		}, {
+			"name": "variable.other.key.lxml",
+			"match": "#([a-zA-Z_][a-zA-Z0-9_]*)",
+			"captures": {
+				"0": { "name": "keyword.operator.access.lxml" },
+				"1": { "name": "support.function.lxml" }
+			}
+		}, {
+			"name": "support.function.lxml",
+			"begin": "\\(",
+			"beginCaptures": {
+				"0": { "name": "constant.character.bracket.lxml" }
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": { "name": "constant.character.bracket.lxml" }
+			},
+			"patterns": [{
+				"name": "variable.parameter.lxml",
+				"match": "[a-zA-Z_][a-zA-Z0-9_]*:"
+			}, {
+				"name": "constant.character.bracket.lxml",
+				"match": "(\\[|\\]|\\(|\\))"
+			}, {
+				"name": "punctuation.string.lxml",
+				"begin": "('|\"|`)",
+				"beginCaptures": { "0": { "name": "string.quoted.double.lxml" } },
+				"end": "('|\"|`)",
+				"endCaptures": { "0": { "name": "string.quoted.double.lxml" } },
+				"patterns": [{
+					"name": "punctuation.substitution.lxml",
+					"begin": "\\$\\{",
+					"beginCaptures": { "0": { "name": "keyword.control.lxml" } },
+					"end": "\\}",
+					"endCaptures": { "0": { "name": "keyword.control.lxml" } },
+					"patterns": [{
+						"name": "constant.character.bracket.lxml",
+						"match": "(\\[|\\]|\\(|\\))"
+						}, {
+						"name": "variable.other.lxml",
+						"match": ".?+"	
+					}]
+				}, {
+					"name": "string.quoted.double.lxml",
+					"match": ".?+"
+				}]
+			}, {
+				"name": "constant.numeric.lxml",
+				"match": "\\d+(\\.\\d+)?"
+			}, {
+				"name": "constant.character.lxml",
+				"match": ".?+"
+			}]
+		}, {
+			"name": "punctuation.section.brackets.lxml",
+			"begin": "\\[",
+			"beginCaptures": { "0": { "name": "constant.character.bracket.lxml" } },
+			"end": "\\](px|%)?",
+			"endCaptures": {
+				"0": { "name": "constant.character.bracket.lxml" },
+				"1": { "name": "keyword.unit.lxml" }
+			},
+			"patterns": [{
+				"name": "constant.numeric.lxml",
+				"match": "\\d+"
+			}, {
+				"name": "variable.other.lxml",
+				"match": "(:|_)"
+			}, {
+				"name": "keyword.unit.lxml",
+				"match": "(?<=\\d)(px|%)"
+			}, {
+				"name": "entity.name.tag.lxml",
+				"match": "(f|m|field|matrix)"
+			}, {
+				"name": "keyword.operator.access.lxml",
+				"match": "(?<=:\\s*)\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
+			}]
+		}, {
+			"name": "support.data.lxml",
+			"begin": "\\{",
+			"beginCaptures": {
+				"0": { "name": "keyword.other.lxml" }
+			},
+			"end": "\\}",
+			"endCaptures": {
+				"0": { "name": "keyword.other.lxml" }
+			},
+			"patterns": [{
+				"name": "variable.parameter.lxml",
+				"match": "[a-zA-Z_][a-zA-Z0-9_]*:"
+			}, {
+				"name": "constant.character.bracket.lxml",
+				"match": "(\\[|\\]|\\(|\\))"
+			}, {
+				"name": "punctuation.string.lxml",
+				"begin": "('|\"|`)",
+				"beginCaptures": { "0": { "name": "string.quoted.double.lxml" } },
+				"end": "('|\"|`)",
+				"endCaptures": { "0": { "name": "string.quoted.double.lxml" } },
+				"patterns": [{
+					"name": "punctuation.substitution.lxml",
+					"begin": "\\$\\{",
+					"beginCaptures": { "0": { "name": "keyword.control.lxml" } },
+					"end": "\\}",
+					"endCaptures": { "0": { "name": "keyword.control.lxml" } },
+					"patterns": [{
+						"name": "constant.character.bracket.lxml",
+						"match": "(\\[|\\]|\\(|\\))"
+						}, {
+						"name": "variable.other.lxml",
+						"match": ".?+"	
+					}]
+				}, {
+					"name": "string.quoted.double.lxml",
+					"match": ".?+"
+				}]
+			}, {
+				"name": "constant.numeric.lxml",
+				"match": "\\d+(\\.\\d+)?"
+			}, {
+				"name": "constant.character.lxml",
+				"match": ".?+"
+			}]
+		}, {
+			"name": "punctuation.string.lxml",
+			"begin": "('|\"|`)",
+			"beginCaptures": { "0": { "name": "string.quoted.double.lxml" } },
+			"end": "('|\"|`)",
+			"endCaptures": { "0": { "name": "string.quoted.double.lxml" } },
+			"patterns": [{
+				"name": "punctuation.substitution.lxml",
+				"begin": "\\$\\{",
+				"beginCaptures": { "0": { "name": "keyword.control.lxml" } },
+				"end": "\\}",
+				"endCaptures": { "0": { "name": "keyword.control.lxml" } },
+				"patterns": [{
+					"name": "constant.character.bracket.lxml",
+					"match": "(\\[|\\]|\\(|\\))"
+					}, {
+					"name": "variable.other.lxml",
+					"match": ".?+"	
+				}]
+			}, {
+				"name": "string.quoted.double.lxml",
+				"match": ".?+"
+			}]
+		}, {
+			"name": "keyword.control.lxml",
+			"match": "(for|if|else|<|>|:|=|\\\\)"
+		}, {
+			"name": "variable.other.lxml",
+			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
+		}, {
+			"name": "support.comment.lxml",
+			"match": "//.+(\\r\\n|\\r|\\n)"
+		}]
+		}, {
+			"name": "meta.directive.lx",
+			"begin": "@lx:use\\s+",
+			"beginCaptures": {
+			  "0": { "name": "keyword.control.lx" }
+			},
+			"end": "(?:;|$)",
+			"patterns": [
+			  {
+				"name": "entity.name.type.lxml",
+				"match": "\\b[A-Za-z_][A-Za-z0-9_.]*\\b"
+			  },
+			  {
+				"name": "punctuation.separator.comma.lxml",
+				"match": ","
+			  }
+			]
+		}, {
+			"name": "meta.directive.lx",
+			"match": "@lx:namespace\\s+([A-Za-z_][A-Za-z0-9_.]*)",
+			"captures": {
+				"0": { "name": "keyword.control.lx" },
+				"1": { "name": "entity.name.type.lxml" }
+			}
+		}, {
+			"name": "keyword.control.lx",
+			"match": "@lx:(?!ml>)[a-zA-Z_<]+"
+		}],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.lxml",
+					"match": "\\b(if|while|for|return)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.lxml",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.lxml",
+					"match": "\\\\."
+				}
+			]
+		}
+	}
+}
